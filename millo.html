@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>El Altar Oculto - Trabajos Misteriosos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Trabajos misteriosos, amarres, dinero y protección. Consulta privada, discreta y poderosa.">
+  <style>
+    :root {
+      --bg-main: #05040a;
+      --bg-card: rgba(10, 9, 20, 0.9);
+      --accent: #c19bff;
+      --accent-2: #ffdf7f;
+      --text-main: #f5f5ff;
+      --text-muted: #b5b5d6;
+      --danger: #ff4f7a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, #2f1153 0, transparent 55%),
+        radial-gradient(circle at bottom, #1a2a44 0, transparent 60%),
+        var(--bg-main);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* Navegación */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to right, rgba(5,4,10,0.98), rgba(10,9,20,0.7));
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    .nav-logo-symbol {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      box-shadow: 0 0 14px rgba(193, 155, 255, 0.65);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      position: relative;
+      padding-bottom: 2px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Layout general */
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 3rem;
+    }
+
+    section {
+      margin-top: 3rem;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2rem;
+      align-items: center;
+      min-height: calc(100vh - 70px);
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: radial-gradient(circle at top left, rgba(193,155,255,0.35), transparent 60%);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-2);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 4vw, 3rem);
+      line-height: 1.1;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      max-width: 520px;
+      font-size: 0.98rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-list {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-list li span {
+      margin-top: 0.1rem;
+      font-size: 0.8rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      padding: 0.7rem 1.3rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at top left, #ffdf7f 0, #c19bff 55%, #8e5bff 100%);
+      color: #140b33;
+      box-shadow: 0 0 18px rgba(193,155,255,0.55);
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 24px rgba(193,155,255,0.75);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: rgba(255,255,255,0.16);
+      color: var(--text-muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    .hero-note {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.7rem;
+      opacity: 0.85;
+    }
+
+    .hero-visual {
+      position: relative;
+      padding: 1.4rem;
+      border-radius: 1.4rem;
+      background: radial-gradient(circle at top, rgba(193,155,255,0.18), rgba(5,4,10,0.9));
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.7);
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(26px);
+      opacity: 0.7;
+    }
+
+    .orb-1 {
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, #ffdf7f, transparent);
+      top: -50px;
+      right: -20px;
+    }
+
+    .orb-2 {
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, #c19bff, transparent);
+      bottom: -80px;
+      left: -60px;
+    }
+
+    .hero-crystal {
+      position: relative;
+      border-radius: 1rem;
+      padding: 1.1rem;
+      background: linear-gradient(135deg, rgba(5,4,10,0.95), rgba(25,16,52,0.98));
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .hero-crystal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    .hero-sigil {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px dashed rgba(255,255,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      background: radial-gradient(circle, rgba(255,223,127,0.08), transparent);
+    }
+
+    .hero-crystal-title {
+      font-size: 0.95rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .hero-crystal-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-crystal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-crystal-tags span {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .hero-crystal-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--accent-2);
+    }
+
+    /* Secciones */
+    .section-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 1.2rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: 1rem;
+      padding: 1rem;
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.75);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.4rem;
+      font-size: 0.9rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.12rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.4rem;
+    }
+
+    .pill-list span {
+      font-size: 0.75rem;
+      padding: 0.16rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.09);
+      color: var(--text-muted);
+    }
+
+    /* Testimonios */
+    .testimonial-quote {
+      font-size: 0.9rem;
+      color: var(--text-main);
+      margin-bottom: 0.4rem;
+    }
+
+    .testimonial-author {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Contacto */
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
+      gap: 1.4rem;
+    }
+
+    .contact-list {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .contact-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-list strong {
+      color: var(--accent-2);
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .field {
+      display: grid;
+      gap: 0.25rem;
+      font-size: 0.8rem;
+    }
+
+    label {
+      color: var(--text-muted);
+    }
+
+    input, textarea {
+      background: rgba(5,4,10,0.9);
+      border-radius: 0.6rem;
+      border: 1px solid rgba(255,255,255,0.13);
+      padding: 0.6rem 0.7rem;
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(193,155,255,0.4);
+      background: rgba(10,9,20,0.95);
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .disclaimer {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 1.2rem 1.5rem 1.5rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    footer a {
+      color: var(--accent-2);
+      text-decoration: none;
+    }
+
+    /* Responsivo */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        min-height: auto;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .grid-3 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .grid-2,
+      .contact-wrapper {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      main {
+        padding-inline: 1.1rem;
+      }
+
+      footer {
+        padding-inline: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navegación -->
+  <header>
+    <nav class="nav">
+      <div class="nav-logo">
+        <div class="nav-logo-symbol">✶</div>
+        <span>EL ALTAR OCULTO</span>
+      </div>
+      <div class="nav-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#testimonios">Testimonios</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div>
+        <div class="hero-tag">
+          <span>Trabajo Misterioso</span> • Consultas privadas
+        </div>
+        <h1>
+          Abro caminos en silencio.<br />
+          <span>Tu resultado habla por mí.</span>
+        </h1>
+        <p class="hero-subtitle">
+          Trabajos discretos, energéticos y enfocados en resultados: amarres,
+          dinero, protección y aperturas de caminos. Sin adornos, sin vueltas.
+        </p>
+
+        <ul class="hero-list">
+          <li>
+            <span>✧</span>
+            Amarres y uniones de pareja cuando todo parece perdido.
+          </li>
+          <li>
+            <span>✧</span>
+            Rituales de dinero, suerte y lotería para mover tu economía.
+          </li>
+          <li>
+            <span>✧</span>
+            Protección espiritual y corte de energías pesadas.
+          </li>
+        </ul>
+
+        <div class="hero-actions">
+          <!-- Reemplaza el enlace con tu número de WhatsApp -->
+          <a class="btn-primary" href="https://wa.me/000000000000?text=Quiero%20información%20sobre%20un%20trabajo%20misterioso" target="_blank" rel="noopener">
+            Agendar trabajo misterioso ✉
+          </a>
+          <a class="btn-ghost" href="#servicios">
+            Ver tipos de trabajos
+          </a>
+        </div>
+
+        <p class="hero-note">
+          Atención 100% privada y personalizada. Sin promesas vacías, solo trabajos serios.
+        </p>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+
+        <div class="hero-crystal">
+          <div class="hero-crystal-header">
+            <span>Lectura inicial</span>
+            <div class="hero-sigil">☾</div>
+          </div>
+          <div class="hero-crystal-title">Escaneo energético secreto</div>
+          <div class="hero-crystal-text">
+            Antes de cualquier trabajo, analizo tu caso en silencio: qué te bloquea,
+            quién te frena y qué puerta se puede abrir.
+          </div>
+          <div class="hero-crystal-tags">
+            <span>Sin juicios</span>
+            <span>Info confidencial</span>
+            <span>Caso por caso</span>
+          </div>
+          <div class="hero-crystal-foot">
+            <span>Primera lectura disponible</span>
+            <span>Desde hoy mismo ⌛</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios">
+      <h2 class="section-title">Trabajos que realizo</h2>
+      <p class="section-subtitle">
+        Cada caso es tratado de forma individual. No todos los trabajos aplican para todas las personas;
+        reviso tu situación y te digo qué es posible sin adornos.
+      </p>
+
+      <div class="grid-3">
+        <article class="card">
+          <div class="card-header">
+            <span class="badge">Amor</span>
+            <span>🔒</span>
+          </div>
+          <h3>Amarres & unión de pareja</h3>
+          <p>
+            Para cuando la conexión existe pero algo la está bloqueando: frialdad, terceros,
+            peleas constantes o separación reciente.
+          </p>
+          <div class="pill-list">
+            <span>Recuperar pareja</span>
+            <span>Cortar terceros</span>
+            <span>Desespero controlado</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <span class="badge">Dinero</span>
+            <span>💰</span>
+          </div>
+          <h3>Dinero & prosperidad</h3>
+          <p>
+            Rituales enfocados en abrir caminos económicos, oportunidades y mejorar tu flujo de dinero:
+            negocios, ventas, trabajo o lotería.
+          </p>
+          <div class="pill-list">
+            <span>Abrir caminos</span>
+            <span>Suerte en juegos</span>
+            <span>Negocios & ventas</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <span class="badge">Protección</span>
+            <span>🛡</span>
+          </div>
+          <h3>Protección & corte de daño</h3>
+          <p>
+            Para cuando sientes envidia, brujería, mala racha constante o pesadez en tu vida y en tu hogar.
+          </p>
+          <div class="pill-list">
+            <span>Contra envidia</span>
+            <span>Corte de trabajos</span>
+            <span>Limpieza energética</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="grid-2" style="margin-top: 1.4rem;">
+        <article class="card">
+          <div class="card-header">
+            <span class="badge">Casos especiales</span>
+            <span>⚠</span>
+          </div>
+          <h3>Separaciones & alejamientos</h3>
+          <p>
+            Trabajos para alejar rivales, personas tóxicas, terceras en tu relación o influencias que destruyen tu paz.
+          </p>
+          <div class="pill-list">
+            <span>Alejar rivales</span>
+            <span>Cortar relaciones tóxicas</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <span class="badge">Misterio</span>
+            <span>☠</span>
+          </div>
+          <h3>Trabajos totalmente reservados</h3>
+          <p>
+            Casos que no se mencionan en público. Se hablan directamente por privado y solo se aceptan
+            si hay una razón de peso.
+          </p>
+          <div class="pill-list">
+            <span>Tratados en privado</span>
+            <span>Selección estricta</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SOBRE MÍ -->
+    <section id="sobre-mi">
+      <h2 class="section-title">Quién está detrás del trabajo</h2>
+      <p class="section-subtitle">
+        No busco fama ni seguidores vacíos. Trabajo en silencio, con pocos casos a la vez,
+        para mantener la energía enfocada y el resultado claro.
+      </p>
+
+      <div class="grid-2">
+        <article class="card">
+          <h3>Filosofía del trabajo</h3>
+          <p>
+            No todos los casos se aceptan. Primero reviso tu situación y te digo si realmente se puede hacer algo.
+            Prefiero decirte “no” antes que prometerte algo imposible.
+          </p>
+          <p>
+            Cada trabajo se hace bajo confidencialidad total. Lo que hablas conmigo, se queda conmigo.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Cómo trabajo tu caso</h3>
+          <p>
+            1. Me envías tu situación por WhatsApp.<br />
+            2. Reviso tu energía y la de la otra persona / situación.<br />
+            3. Te digo qué se puede hacer, tiempo aproximado y costo.<br />
+            4. Si aceptas, se inicia el trabajo y se te va informando por privado.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section id="testimonios">
+      <h2 class="section-title">Personas que ya trabajé en silencio</h2>
+      <p class="section-subtitle">
+        Por privacidad, los nombres son abreviados. Lo importante no es quiénes son, sino lo que sintieron
+        cuando el resultado llegó.
+      </p>
+
+      <div class="grid-3">
+        <article class="card">
+          <p class="testimonial-quote">
+            “Llevábamos meses separados y ya ni me escribía. A las semanas del trabajo volvió
+            a buscarme él solo. No tuve que rogarle.”
+          </p>
+          <p class="testimonial-author">M. R. – Caso de amor</p>
+        </article>
+
+        <article class="card">
+          <p class="testimonial-quote">
+            “Las ventas habían caído demasiado. Después del trabajo de dinero, llegaron clientes nuevos
+            que ni tenía en el mapa.”
+          </p>
+          <p class="testimonial-author">J. L. – Negocio y dinero</p>
+        </article>
+
+        <article class="card">
+          <p class="testimonial-quote">
+            “Sentía la casa pesada, peleas por todo. Después de la limpieza y protección, el ambiente cambió.
+            Hasta dormimos mejor.”
+          </p>
+          <p class="testimonial-author">F. & L. – Protección del hogar</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+      <h2 class="section-title">Contacto reservado</h2>
+      <p class="section-subtitle">
+        Escríbeme solo si hablas en serio. Respeto tu tiempo y tu energía; espero lo mismo de tu parte.
+      </p>
+
+      <div class="contact-wrapper">
+        <div class="card">
+          <h3>Vía rápida</h3>
+          <ul class="contact-list">
+            <li>
+              <strong>WhatsApp:</strong><br />
+              <!-- Cambia el número por el tuyo real -->
+              <a href="https://wa.me/000000000000?text=Quiero%20información%20sobre%20un%20trabajo%20misterioso" target="_blank" rel="noopener">
+                Enviar mensaje directo
+              </a>
+            </li>
+            <li>
+              <strong>Horario:</strong><br />
+              Atendiendo casos por orden de mensaje. Si no respondo de una vez, es porque estoy trabajando.
+            </li>
+            <li>
+              <strong>País:</strong><br />
+              Atiendo personas de cualquier país. Todo se maneja online.
+            </li>
+          </ul>
+          <p class="disclaimer">
+            *Esta página es informativa. Los resultados pueden variar según la situación de cada persona.
+          </p>
+        </div>
+
+        <form class="card contact-form">
+          <h3>Escribe tu caso (formato básico)</h3>
+          <div class="field">
+            <label for="nombre">Nombre (o iniciales)</label>
+            <input id="nombre" type="text" placeholder="Ej: W. O." />
+          </div>
+          <div class="field">
+            <label for="tipo">Tipo de trabajo que buscas</label>
+            <input id="tipo" type="text" placeholder="Amarre, dinero, protección, separación..." />
+          </div>
+          <div class="field">
+            <label for="detalle">Cuéntame tu situación en breve</label>
+            <textarea id="detalle" placeholder="Explica qué está pasando y qué resultado quieres."></textarea>
+          </div>
+          <button type="button" class="btn-primary" onclick="alert('Este formulario es de ejemplo. Envíame tu caso por WhatsApp para una respuesta real.')">
+            Enviar (demo)
+          </button>
+          <p class="disclaimer">
+            Este formulario es solo demostrativo en este archivo. Para atención real,
+            copia tu mensaje y envíalo directamente por WhatsApp.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> El Altar Oculto · Trabajo misterioso y reservado.</span>
+    <span>Desarrollado para uso personal. No compartir sin permiso.</span>
+  </footer>
+
+  <script>
+    // Año dinámico en el footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
